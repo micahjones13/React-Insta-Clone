@@ -9,12 +9,13 @@ import './PostContainer.css';
 const PostContainer = (props) => {
     return(
         <div className = 'post-container'>
-            <PostHeader item = {props.item} />
-            <Post item = {props.item} />
-             <CommentSection 
-                comments = {props.item.comments}
-            />
-        
+            <div className = 'post-comment-header-container'>
+                <PostHeader item = {props.item} />
+                <Post item = {props.item} />
+                <CommentSection 
+                    comments = {props.item.comments}
+                />
+            </div>
         </div>
     );
 }
