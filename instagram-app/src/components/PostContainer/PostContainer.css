@@ -1,0 +1,26 @@
+.post-container {
+    /* border: 1px solid red; */
+    padding-top: 50px;
+}
+
+.post-header {
+    /* border: 1px solid blue; */
+    display: flex;
+    align-items: center;
+    
+}
+.post-header img {
+    border-radius: 100px;
+    padding: 10px;
+    width: 5%;
+}
+.post-header p{
+    font-weight: bold;
+}
+.post {
+    display: flex;
+    flex-direction: column;
+    width: 49%;
+    align-items: flex-start;
+    padding: 10px;
+}

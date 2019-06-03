@@ -2,11 +2,15 @@ import React from 'react';
 import CommentSection from '../CommentSection/CommentSection.js';
 import PropTypes from 'prop-types';
 import PostHeader from './PostHeader';
+import Post from './Post';
+
+import './PostContainer.css';
 
 const PostContainer = (props) => {
     return(
         <div className = 'post-container'>
             <PostHeader item = {props.item} />
+            <Post item = {props.item} />
              <CommentSection 
                 comments = {props.item.comments}
             />

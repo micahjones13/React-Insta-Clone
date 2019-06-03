@@ -2,6 +2,7 @@ import React from 'react';
 import Comment from './Comment';
 import PropTypes from 'prop-types';
 
+import './CommentSection.css';
 const CommentSection = (props) => {
     return (
         <div className = 'comment-section'>
@@ -16,6 +17,7 @@ const CommentSection = (props) => {
                   )
               })
           }
+          
           <input placeholder = 'Add a comment'></input>
          
    

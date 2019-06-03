@@ -1,0 +1,12 @@
+.search-bar {
+    width: 50%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.search-bar .written-logo{
+    width: 20%;
+}
+.search-bar img {
+    width: 10%;
+}

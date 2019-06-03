@@ -6,8 +6,7 @@ const PostHeader = (props) => {
         <div className = 'post-header'>
             <img src = {props.item.thumbnailUrl} alt = ''></img>
              <p>{props.item.username}</p>
-                <img src = {props.item.imageUrl} alt = ''></img>
-            <p>{props.item.likes} likes</p>
+             
         </div>
     )
 }
