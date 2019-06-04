@@ -4,7 +4,7 @@ const Post = props => {
     return (
         <div className = 'post'>
             <img src = {props.item.imageUrl} alt = ''></img>
-            <p><img src = '' alt = 'heart'></img>  <img src = ' ' alt = 'comment'></img></p>
+            <p><img onClick = {props.incrementLikes} src = '' alt = 'heart'></img>  <img src = ' ' alt = 'comment'></img></p>
             
             <p>{props.item.likes} likes</p>
         </div>

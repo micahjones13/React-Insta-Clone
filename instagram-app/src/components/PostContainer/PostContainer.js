@@ -6,18 +6,34 @@ import Post from './Post';
 
 import './PostContainer.css';
 
-const PostContainer = (props) => {
+class PostContainer extends React.Component {
+    state = {
+        likes: this.props.item.likes
+    }
+
+    incrementLikes = (e) => {
+        e.preventDefault();
+        this.setState({
+            likes: this.props.item.likes++
+        })
+     }
+
+    render(){
     return(
         <div className = 'post-container'>
             <div className = 'post-comment-header-container'>
-                <PostHeader item = {props.item} />
-                <Post item = {props.item} />
+                <PostHeader item = {this.props.item} />
+                <Post
+                     item = {this.props.item} 
+                     incrementLikes = {this.incrementLikes}
+                />
                 <CommentSection 
-                    comments = {props.item.comments}
+                    comments = {this.props.item.comments}
                 />
             </div>
         </div>
     );
+    }
 }
 
 PostContainer.propTypes = {
@@ -46,16 +62,47 @@ PostContainer.propTypes = {
 
 export default PostContainer;
 
-//<CommentSection comments = {props.data}/>
+//BEFORE CLASS CONVERSION
 
-
-// {
-//     props.data.map(item => {
-//         return(
-//             <CommentSection
-//                 key = {item.id}
-//                 item={item}
-//             />
-//         )
-//     })
+// const PostContainer = (props) => {
+//     return(
+//         <div className = 'post-container'>
+//             <div className = 'post-comment-header-container'>
+//                 <PostHeader item = {props.item} />
+//                 <Post
+//                      item = {props.item} 
+//                      incrementLikes = {props.incrementLikes}
+//                 />
+//                 <CommentSection 
+//                     comments = {props.item.comments}
+//                 />
+//             </div>
+//         </div>
+//     );
 // }
+
+// PostContainer.propTypes = {
+//     item: PropTypes.shape(
+//         {
+//             id: PropTypes.string.isRequired,
+//             username: PropTypes.string.isRequired,
+//             thumbnailUrl: PropTypes.string.isRequired,
+//             imageUrl: PropTypes.string.isRequired,
+//             likes: PropTypes.number.isRequired,
+//             timestamp: PropTypes.string.isRequired,
+//             comments: PropTypes.arrayOf(PropTypes.shape (
+//                 {
+//                     id: PropTypes.number.isRequired,
+//                     username: PropTypes.string.isRequired,
+//                     text: PropTypes.string.isRequired,
+//                 }
+            
+//             ))
+
+//         }
+
+
+//     )
+// }
+
+// export default PostContainer;
