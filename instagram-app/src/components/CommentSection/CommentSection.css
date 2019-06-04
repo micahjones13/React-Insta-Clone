@@ -1,0 +1,19 @@
+.comment-section {
+    /* border: 1px solid green; */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-left: 10px;
+    
+}
+.comment {
+    margin-top: -10px;
+}
+.username {
+    font-weight: bold;
+    color: darkblue;
+}
+input {
+    width: 40%;
+    
+}
