@@ -1,7 +1,7 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCompass } from '@fortawesome/free-solid-svg-icons';
-import { faHeart } from '@fortawesome/free-solid-svg-icons';
+import { faHeart } from '@fortawesome/free-regular-svg-icons';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
 
 import './SearchBar.css';
@@ -15,7 +15,8 @@ const SearchBar = (props) => {
             </div>
             <div className = 'form-container'> 
             <form onSubmit = {props.search}>
-                <input onChange = {props.handleChanges}
+                <input onChange = {props.handleSearch}
+                        
                         value = {props.value} 
                         className = 'search' 
                         placeholder = 'Search ... '
