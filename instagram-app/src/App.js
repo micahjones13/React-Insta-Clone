@@ -1,15 +1,21 @@
 import React from 'react';
 import dummyData from './dummy-data';
-import PostContainer from './components/PostContainer/PostContainer';
-import SearchBar from './components/SearchBar/SearchBar.js';
+import PostsPage from './components/PostContainer/PostsPage.js';
+import withAuthenticate from './components/authentication/withAuthenticate.js';
+import LoginPage from './components/Login/Login';
+
 import './App.css';
+
+//HOC
+const ComponentFromWithAuthenticate = withAuthenticate(PostsPage)(LoginPage);
 
 class App extends React.Component {
   constructor() {
     super();
     this.state = {
       data: [],
-      searchText: ''
+      searchText: '',
+      
     };
   }
 
@@ -21,53 +27,65 @@ class App extends React.Component {
   }
 
  
-  search = e => {
-    //filter the data array according the input of the seach bar. If the input matches, display the posts with that username
-    e.preventDefault();
-    let filteredData = [];
-    let currentData = this.state.data;
+  // search = e => {
+  //   //filter the data array according the input of the seach bar. If the input matches, display the posts with that username
+  //   let filtered = [];
 
-    filteredData = currentData.filter(item => {
-      const lc = item.username.toLowerCase();
-      const filter = this.state.searchText.toLowerCase();
+  //     if(this.state.searchText !== '') {
+  //       filtered = this.state.data.filter(item => {
+  //         return(item.username.includes(this.state.searchText))
+  //       });
 
-      return lc.includes(filter);
-    })
+  //       this.setState({
+  //         data: filtered
+  //       }) 
+  //     } else {
+  //       this.setState({ data: dummyData })
+  //     }
+    
 
-    this.setState({
-      data: filteredData
-    });
 
 
+  // }
 
-  }
+  // handleChanges = e => {
+  //   this.setState({
+  //     //[e.target.name]
+  //    searchText: e.target.value
+  //   });
 
-  handleChanges = e => {
-    this.setState({
-      [e.target.name]: e.target.value
-    });
-  }
+  //   let filtered = [];
+
+  //     if(this.state.searchText !== '') {
+  //       filtered = this.state.data.filter(item => {
+  //         return(item.username.includes(this.state.searchText))
+  //       });
+
+  //       // this.setState({
+  //       //   data: filtered
+  //       // }) 
+  //     } else {
+  //       // this.setState({ data: dummyData })
+  //       filtered = dummyData;
+  //     }
+  //     this.setState({
+  //       data: filtered,
+       
+  //     }) 
+  // }
+
+  
   
 
   render() {
     return (
       <div className="App">
-        <SearchBar 
-        handleChanges = {this.handleChanges}
-        value = {this.state.searchText}
-        search = {this.search}
-        /> 
-        {
-          this.state.data.map(item => {
-              return(
-                  <PostContainer
-                      key = {item.id}
-                      item={item}
-                     
-                  />
-              )
-          })
-        }
+      
+       <ComponentFromWithAuthenticate
+          data = {this.state.data}
+          handleChanges = {this.handleChanges}
+          value = {this.state.searchText}
+       />
         
       </div>
     );
@@ -76,9 +94,56 @@ class App extends React.Component {
 
 export default App;
 
-// <PostContainer data = {this.state.data.map(item => {
-//   return(item = {item})
-// })} />
+//PUT THIS BACK AFTER TESTING LOGIN 
+// <ComponentFromWithAuthenticate
+// data = {this.state.data}
+// handleChanges = {this.handleChanges}
+// value = {this.state.searchText}
+// />
 
 
-//<PostContainer data = {this.state.data} />
+ 
+// search = e => {
+//   //filter the data array according the input of the seach bar. If the input matches, display the posts with that username
+//   e.preventDefault();
+//   let filteredData = [];
+//   let currentData = [];
+
+//   if (this.state.searchText !== ''){
+//     currentData = this.state.data;
+//     console.log('top of if');
+
+//   filteredData = currentData.filter(item => {
+//     const lc = item.username.toLowerCase();
+//     const filter = this.state.searchText.toLowerCase();
+
+//     return lc.includes(filter);
+//   })
+// }else {
+//   filteredData = this.state.data;
+// }
+//   this.setState({
+//     data: filteredData
+//   });
+
+
+
+// }
+
+
+//ORIGINAL WORKING MAP BEFORE IMPLEMENTING POSTPAGE
+// <SearchBar 
+//           handleChanges = {this.handleChanges}
+//           value = {this.state.searchText}
+//         /> 
+// {
+//   this.state.data.map(item => {
+//       return(
+//           <PostContainer
+//               key = {item.id}
+//               item={item}
+//               search = {this.search}
+//           />
+//       )
+//   })
+// }

@@ -18,6 +18,8 @@ class PostContainer extends React.Component {
         })
      }
 
+    
+
     render(){
     return(
         <div className = 'post-container'>
