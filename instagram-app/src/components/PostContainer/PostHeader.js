@@ -1,13 +1,25 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
+import UsernameStyle from '../Styles/UsernameStyle';
 
+const PostHeaderContainer = styled.div `
+    display: flex;
+    align-items: center;
+    width: 49%;
+`;
+const ThumbNailStyled = styled.img `
+    border-radius: 100px;
+    padding: 10px;
+    width: 6%;
+`;
 const PostHeader = (props) => {
     return(
-        <div className = 'post-header'>
-            <img src = {props.item.thumbnailUrl} alt = ''></img>
-             <p>{props.item.username}</p>
+        <PostHeaderContainer>
+            <ThumbNailStyled src = {props.item.thumbnailUrl} alt = ''></ThumbNailStyled>
+             <UsernameStyle type = 'usernameTitle'>{props.item.username} </UsernameStyle>
              
-        </div>
+        </PostHeaderContainer>
     )
 }
 

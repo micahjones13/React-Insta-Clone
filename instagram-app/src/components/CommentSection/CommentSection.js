@@ -2,7 +2,18 @@ import React from 'react';
 import Comment from './Comment';
 import PropTypes from 'prop-types';
 import Form from './Form';
+import styled from 'styled-components';
+
 import './CommentSection.css';
+
+const CommentSectionContainer = styled.div `
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-left: 10px;
+`;
+
+
 class CommentSection extends React.Component {
     state = {
         comments: this.props.comments,
@@ -15,7 +26,8 @@ class CommentSection extends React.Component {
         e.preventDefault();
         const newComment = {
             text: this.state.text,
-            username: 'Thrifty', //hard coded username
+            // username: 'Thrifty', //hard coded username
+            username: localStorage.getItem('username'),
             id: Date.now() //keep id's unique
         };
         this.setState({
@@ -32,7 +44,7 @@ class CommentSection extends React.Component {
 
     render() {
     return (
-        <div className = 'comment-section'>
+        <CommentSectionContainer>
           {
               this.state.comments.map (item => {
                   return (
@@ -51,7 +63,7 @@ class CommentSection extends React.Component {
           />
          
    
-        </div>
+        </CommentSectionContainer>
     );
   }
 }

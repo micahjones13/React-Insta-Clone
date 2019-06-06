@@ -1,15 +1,43 @@
 import React from 'react';
+import styled from 'styled-components';
 
+const LoginContainer = styled.div `
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    
 
+    input{
+        text-align: center;
+        height: 20px;
+        width: 10%;
+        margin-top: 5px;
+        border-color: green;
+    }
+    button{
+        margin-top: 5px;
+        padding: 10px;
+        width: 5%;
+        background: lightblue;
+            &:hover{
+                background: black;
+                color: white;
+            }
+    }
+`;
 
 const LoginPage = (props) => {
     return(
         
-        <div className = 'login'>
+        <LoginContainer>
              <input type = 'text' placeholder = 'username' value = {props.value} onChange = {props.handleChanges}></input>
+             
              <input type = 'text' placeholder = 'password'></input>
              <button onClick = {props.login}>Login</button>
-         </div>
+         </LoginContainer>
         
     );
 }
